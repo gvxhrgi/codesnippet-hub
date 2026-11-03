@@ -1,13 +1,24 @@
-import { useEffect, useState } from 'react'
-import Hero from './components/Hero'
-import AddSnippetModal from './components/AddSnippetModal'
+import { useEffect, useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Catalog from './components/Catalog';
+import AddSnippetModal from './components/AddSnippetModal';
 import { initialSnippets } from './data/initialSnippets';
-
 
 function App() {
   const [snippets, setSnippets] = useState(() => {
-    const saved = localStorage.getItem('code_snippets');
-    return saved ? JSON.parse(saved) : initialSnippets;
+    try {
+      const saved = localStorage.getItem('code_snippets');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to parse saved snippets:', e);
+    }
+    return initialSnippets;
   });
 
   const [selectedLanguage, setSelectedLanguage] = useState('all');
@@ -15,27 +26,66 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('code_snippets', JSON.stringify(snippets));
+    try {
+      localStorage.setItem('code_snippets', JSON.stringify(snippets));
+    } catch (e) {
+      console.error('Failed to save snippets to localStorage:', e);
+    }
   }, [snippets]);
 
   const handleAddSnippet = (newSnippet) => {
-    setSnippets([newSnippet, ...snippets]);
+    setSnippets((prev) => [newSnippet, ...prev]);
   };
 
-  const languages = ['all', ...new Set(snippets.map(s => s.language.toLowerCase()))];
+  const handleTagClick = (tag) => {
+    setSearchQuery(tag);
+    setSelectedLanguage('all');
+    const catalogElement = document.getElementById('snippets-grid');
+    if (catalogElement) {
+      catalogElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-  const filteredSnippets = snippets.filter(snippet => {
-    const matchesLang = selectedLanguage === 'all' || snippet.language.toLowerCase() === selectedLanguage;
-    const matchesSearch = snippet.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      snippet.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      snippet.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesLang && matchesSearch;
+  const handleResetFilters = () => {
+    setSelectedLanguage('all');
+    setSearchQuery('');
+  };
+
+  const languages = ['all', ...new Set(snippets.map((s) => s.language.toLowerCase()))];
+
+  const query = searchQuery.trim().toLowerCase();
+  const filteredSnippets = snippets.filter((snippet) => {
+    const matchesLang =
+      selectedLanguage === 'all' || snippet.language.toLowerCase() === selectedLanguage;
+    
+    if (!matchesLang) return false;
+    if (!query) return true;
+
+    const matchesTitle = snippet.title?.toLowerCase().includes(query);
+    const matchesCode = snippet.code?.toLowerCase().includes(query);
+    const matchesDesc = snippet.description?.toLowerCase().includes(query);
+    const matchesTags = snippet.tags?.some((t) => t.toLowerCase().includes(query));
+
+    return Boolean(matchesTitle || matchesCode || matchesDesc || matchesTags);
   });
-
 
   return (
     <div className="app">
+      <Navbar onOpenAddModal={() => setIsModalOpen(true)} />
       <Hero onOpenAddModal={() => setIsModalOpen(true)} />
+
+      <Catalog
+        snippets={filteredSnippets}
+        totalSnippets={snippets.length}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        selectedLanguage={selectedLanguage}
+        onSelectLanguage={setSelectedLanguage}
+        languages={languages}
+        onTagClick={handleTagClick}
+        onResetFilters={handleResetFilters}
+        onOpenAddModal={() => setIsModalOpen(true)}
+      />
 
       <AddSnippetModal
         isOpen={isModalOpen}
@@ -43,7 +93,7 @@ function App() {
         onAddSnippet={handleAddSnippet}
       />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
