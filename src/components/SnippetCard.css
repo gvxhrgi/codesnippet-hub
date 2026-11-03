@@ -58,6 +58,40 @@
   text-align: center;
 }
 
+.window-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.star-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.35rem;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.star-toggle-btn:hover {
+  background-color: rgba(251, 191, 36, 0.12);
+  transform: scale(1.15);
+}
+
+.star-toggle-btn.favorited {
+  animation: starPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes starPop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
 .lang-badge {
   font-size: 0.7rem;
   font-weight: 700;
@@ -122,6 +156,44 @@
   flex-grow: 1;
   overflow-x: auto;
   background-color: #0b0f19;
+  position: relative;
+}
+
+.snippet-body.collapsed {
+  max-height: 190px;
+  overflow: hidden;
+}
+
+.snippet-fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, rgba(11, 15, 25, 0), #0b0f19);
+  pointer-events: none;
+}
+
+.code-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background-color: #0b0f19;
+  border: none;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.code-expand-btn:hover {
+  background-color: rgba(56, 189, 248, 0.08);
+  color: #60a5fa;
 }
 
 .snippet-body pre {
@@ -137,6 +209,28 @@
   white-space: pre;
   display: block;
 }
+
+.monaco-highlighted-code {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #d4d4d4;
+  white-space: pre;
+  display: block;
+}
+
+.monaco-highlighted-code .mtk1 { color: #d4d4d4; }
+.monaco-highlighted-code .mtk2 { color: #1e1e1e; }
+.monaco-highlighted-code .mtk3 { color: #808080; }
+.monaco-highlighted-code .mtk4 { color: #569cd6; }
+.monaco-highlighted-code .mtk5 { color: #9cdcfe; }
+.monaco-highlighted-code .mtk6 { color: #ce9178; }
+.monaco-highlighted-code .mtk7 { color: #b5cea8; }
+.monaco-highlighted-code .mtk8 { color: #6a9955; font-style: italic; }
+.monaco-highlighted-code .mtk9 { color: #dcdcaa; }
+.monaco-highlighted-code .mtk10 { color: #4ec9b0; }
+.monaco-highlighted-code .mtk11 { color: #c586c0; }
+.monaco-highlighted-code .mtk12 { color: #d7ba7d; }
 
 .snippet-footer {
   background-color: #111827;
@@ -154,6 +248,7 @@
   gap: 0.4rem;
   flex-wrap: wrap;
   align-items: center;
+  flex: 1;
 }
 
 .tag-chip {
@@ -176,6 +271,56 @@
   transform: translateY(-1px);
 }
 
+.tag-chip.tag-more-chip {
+  border-style: dashed;
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+  background-color: rgba(56, 189, 248, 0.08);
+}
+
+.tag-chip.tag-more-chip:hover {
+  background-color: rgba(56, 189, 248, 0.18);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.meta-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.action-icon-btn {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.action-icon-btn.edit-btn:hover {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.action-icon-btn.delete-btn:hover {
+  color: #f87171;
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.action-icon-btn:active {
+  transform: scale(0.95);
+}
+
 .action-copy-btn {
   display: inline-flex;
   align-items: center;
@@ -186,7 +331,8 @@
   font-size: 0.825rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 0.4rem 0.8rem;
+  height: 32px;
+  padding: 0 0.75rem;
   border-radius: 0.4rem;
   white-space: nowrap;
   flex-shrink: 0;
@@ -207,4 +353,15 @@
 
 .copy-icon {
   flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .snippet-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .meta-right {
+    justify-content: flex-end;
+  }
 }

@@ -1,5 +1,4 @@
 import { Plus, Search } from 'lucide-react';
-import heroImage from '../assets/hero.webp';
 import './Hero.css';
 
 export default function Hero({ onOpenAddModal }) {
@@ -31,7 +30,15 @@ export default function Hero({ onOpenAddModal }) {
 
         <div className="hero-visuals">
           <div className="image-wrapper">
-            <img src={heroImage} alt="CodeSnippet Hub Visual" className="hero-img" />
+            <img
+              src="/hero.webp"
+              alt="CodeSnippet Hub code snippet catalog preview"
+              className="hero-img"
+              width="740"
+              height="740"
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

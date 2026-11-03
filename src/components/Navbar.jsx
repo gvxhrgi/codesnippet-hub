@@ -1,19 +1,20 @@
 import { Code2, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import githubLogo from '../assets/github.svg';
 import './Navbar.css';
 
 export default function Navbar({ onOpenAddModal }) {
   return (
     <header className="navbar">
-      <div className="navbar-container">
-        <a href="#" className="navbar-brand">
+      <nav className="navbar-container" aria-label="Primary navigation">
+        <Link to="/" className="navbar-brand" aria-label="CodeSnippet Hub home">
           <div className="logo-icon-wrapper">
             <Code2 size={24} />
           </div>
           <span className="brand-title">
             CodeSnippet <span className="brand-accent">Hub</span>
           </span>
-        </a>
+        </Link>
 
         <div className="navbar-actions">
           <a
@@ -42,7 +43,7 @@ export default function Navbar({ onOpenAddModal }) {
             <span>New Snippet</span>
           </button>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
