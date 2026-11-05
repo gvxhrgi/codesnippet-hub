@@ -1,113 +1,65 @@
-# CodeSnippet Hub
+# Code Snippet Hub — პრეზენტაციის მონახაზი
 
-CodeSnippet Hub არის რესპონსიული ბრაუზერზე დაფუძნებული ბიბლიოთეკა სადაც მომხმარებელს შეუძლია შეინახოს, გააზიაროს, მოძებნოს, ფავორიტებში დაამატოს კოდი.
+[პრეზენტაციის Link-ი](https://canva.link/8gk1tq5lbi13cuw)
 
-**Repository:** [github.com/gvxhrgi/codesnippet-hub](https://github.com/gvxhrgi/codesnippet-hub)
+## სლაიდი 1 — სათაური
 
-## Features
+- Code Snippet Hub
+- Front-end პროგრამირება — პრაქტიკული პროექტი (06.1.1.9), 4 კრედიტი
+- სტუდენტი: Giorgi Kavtaradze
+- თარიღი: 6 ნოემბერი, 2026
 
-- შექმენით და დაარედაქტირეთ ჩანაწერები მოქნილი ინტერფეისით და Syntax Highlight-ით.
-- მოძებნეთ ჩანაწერები სათაურის, კოდის, აღწერილობის და ტეგების მიხედვით.
-- გაფილტრეთ ენების და ფავორიტების მიხედვით.
-- დაამატეთ ჩანაწერები ფავორიტებში, შემდეგ ერთი დაჭერით დააკოპირეთ ის.
-- დამადასტურებელი Modal წაშლის წინ.
-- შეინახე ჩანაწერები ბიბლიოთეკაში `localStorage` დახმარებით.
-- რესპონსიული ვებგვერდი Desktop, Tablet და Mobile ეკრანებისთვის.
-- Monaco Editor ოპტიმიზაციის გამო ირთვება მხოლოდ მაშინ როდესაც ამატებთ ან არედაქტირებთ ჩანაწერს
+## სლაიდი 2 — პრობლემა და მიზანი
 
-## Getting Started
+- ბევრი პროგრამისტისთვის პრობლემაა, რომ სასარგებლო კოდის ფრაგმენტები მიმოფანტულია notes-ებში და სხვადასხვა ფაილებში.
+- სასურველი იყო ერთიანი სივრცე, სადაც შესაძლებელი იქნებოდა ფრაგმენტების შენახვა, მოძებნა, გაცნობა და ხელახლა გამოყენება.
+- მიზანი: შეიქმნას მარტივი, სწრაფი და მოწესრიგებული გარემო კოდის შესანახად.
+- პროექტი ეხმარება მომხმარებელს: დაამატოს, მოიძიოს, გამოიყენოს ფილტრები და შეინახოს ყველაზე ხშირად გამოყენებული კოდი ერთ ადგილას.
 
-### Requirements
+## სლაიდი 3 — მომხმარებლის ძირითადი სცენარი
 
-- Node.js
-- npm
+1. მომხმარებელი ხსნის აპს და ხედავს არსებული კოდის კოლექციას.
+2. ეძებს ფრაგმენტს სათაურის, კოდის, აღწერის ან ტეგების მიხედვით.
+3. ირჩევს ენას და/ან აჩვენებს მხოლოდ რჩეულ ფრაგმენტებს.
+4. დამატების, რედაქტირების ან წაშლის მოქმედებების შესრულება.
+5. დააკოპირებს სასურველ კოდს და გამოიყენებს მას მომავალში.
 
-### Install and run
+## სლაიდი 4 — ტექნოლოგიები და არქიტექტურა
 
-```bash
-npm ci
-npm run dev
-```
+- React — UI და state-ების მართვა.
+- JavaScript — ლოგიკა, მონაცემების ტრანსფორმაცია და UI-ჯგუფების ურთიერთქმედება.
+- Vite — სწრაფი dev server და production build.
+- CSS Grid/Flexbox — responsive layout და ვიზუალური განლაგება.
+- Monaco Editor — კოდის შესაყვანად უნიკალური syntax highlighting.
+- React Router — სხვადასხვა გვერდების ნავიგაცია.
+- `localStorage` — მონაცემების ადგილობრივი შენახვა ბრაუზერში.
 
-### Available commands
+## სლაიდი 5 — ინტერფეისი და მომხმარებლის გამოცდილება
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the local development server |
-| `npm run lint` | Run ESLint |
-| `npm run build` | Create the optimized production build in `dist/` |
-| `npm run preview` | Preview the production build locally |
+- მთავარი გვერდი მოიცავს Hero-ს, საძიებო ბარს, ენის ფილტრს და snippet cards.
+- ყოველი ბარათი აჩვენებს სათაურს, ენას, აღწერას, ტეგებს და favorite-სტატუსს.
+- ინტერფეისი სრულად responsive-ია: Desktop, Tablet და Mobile-ზე.
+- ასევე არსებობს Information Pages: About, How it works, Privacy და Contact.
+- UI დიზაინი მარტივია და ყურადღება ძირითად ფუნქციონალზეა გადატანილი.
 
-## Pages
+## სლაიდი 6 — ფუნქციონალის დემო
 
-| Path | Description |
-| --- | --- |
-| `/` | Snippet catalog and search |
-| `/about` | Project overview |
-| `/how-it-works` | Feature guide |
-| `/privacy` | Browser storage and privacy details |
-| `/contact` | Link to the GitHub repository |
+- მოვძებნოთ ფრაგმენტი ტეგით, სათაურით ან კოდით.
+- ჩავრთოთ language / favorites filter.
+- დავამატოთ ახალი snippet და შევამოწმოთ required-field validation.
+- მოვნიშნოთ როგორც favorite, დავაკოპიროთ code, ასევე დავარედაქტიროთ ან წავშალოთ ჩანაწერი.
 
-ვებ-გვერდი ასევე აღიქვამს საზიებოში არასწორად ჩაწერილ გვერდის მისამართს და აბრუნებს Page Not Found გვერდს.
+## სლაიდი 7 — შემოწმება და ვერსიების კონტროლი
 
-## How It Works
+- ESLint: `npm run lint` — წარმატებით დასრულდა.
+- Production build: `npm run build` — წარმატებით დასრულდა.
+- GitHub Repository: https://github.com/gvxhrgi/codesnippet-hub
+- პროექტი გაივლის ვერსიის კონტროლს GitHub-ზე, სადაც შენარჩუნებულია წინა ცვლილებები და development history.
 
-```mermaid
-flowchart TD
-  A[Open app] --> B[Load React app and BrowserRouter]
-  B --> C[Read code_snippets from localStorage]
-  C --> D{Saved value is a non-empty array?}
-  D -->|Yes| E[Use saved snippets]
-  D -->|No or invalid JSON| F[Use initial snippets]
-  E --> G[App state]
-  F --> G
-  G --> H[Render shared header and primary navigation]
-  G --> I{Current URL route}
-  I -->|/| J[Home: Hero and catalog]
-  I -->|Info route| K[About, guide, privacy, or contact page]
-  I -->|Unknown route| L[Not-found page]
-  J --> M[Search and language or favorite filters]
-  M --> N[Match title, code, description, tags, language, and favorite status]
-  N --> O[Render matching snippet cards]
-  O --> P[Copy code to clipboard]
-  O --> Q[Toggle favorite]
-  O --> R[Select a tag]
-  R --> S[Search tag, reset other filters, and scroll to catalog]
-  S --> M
-  O --> T[Edit snippet]
-  H -->|New Snippet| U[Open Add form]
-  T --> V[Open Edit form with current values]
-  U --> W[Lazy-load form and Monaco Editor]
-  V --> W
-  W -->|Cancel, close, or Escape| G
-  W --> X{Required fields valid?}
-  X -->|No| Y[Show validation errors]
-  Y --> W
-  X -->|Valid: add| Z[Create snippet]
-  X -->|Valid: edit| AA[Update snippet and preserve favorite status]
-  Z --> AB[Update snippets state]
-  AA --> AB
-  O -->|Delete| AC[Open delete confirmation]
-  AC --> AD{Confirm deletion?}
-  AD -->|Yes| AE[Remove snippet]
-  AD -->|No| O
-  Q --> AB
-  AE --> AB
-  AB --> AF[Save snippets to localStorage]
-  AF --> G
-  H --> AG[Footer navigation]
-  AG -->|Information page link| I
-  H --> AH[Open GitHub repository]
-```
+## სლაიდი 8 — შეზღუდვები და მომავალი გაუმჯობესებები
 
-## Project Structure
+- `localStorage` მონაცემები მხოლოდ browser-ში ინახება; cross-device sync არ არსებობს.
+- შესაძლებელია API/backend დამატება, user accounts, import/export, cloud sync.
+- ასევე შეიძლება დაემატოს tag management, search suggestions, dark mode და code preview enhancements.
 
-```text
-src/
-  components/   Page, catalog, card, navigation, and modal components
-  data/         Initial example snippets
-  utils/        Monaco language mapping
-  App.jsx       App routes, state, filtering, and persistence
-  main.jsx      React entry point and router setup
-public/         Static assets served directly
-```
+**დასასრული:** მადლობა. კითხვები?
