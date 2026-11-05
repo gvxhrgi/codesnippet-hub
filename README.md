@@ -1,26 +1,25 @@
 # CodeSnippet Hub
 
-CodeSnippet Hub is a responsive browser-based library for saving, finding, and reusing code snippets. Organize entries with a language, description, and tags; search the catalog; and keep useful snippets marked as favorites.
+CodeSnippet Hub არის რესპონსიული ბრაუზერზე დაფუძნებული ბიბლიოთეკა სადაც მომხმარებელს შეუძლია შეინახოს, გააზიაროს, მოძებნოს, ფავორიტებში დაამატოს კოდი.
 
 **Repository:** [github.com/gvxhrgi/codesnippet-hub](https://github.com/gvxhrgi/codesnippet-hub)
 
 ## Features
 
-- Create and edit snippets with a Monaco code editor and required-field validation.
-- Search snippet titles, code, descriptions, and tags.
-- Filter by programming language and favorite status.
-- Add snippets to favorites, jump to a tag search, and copy code to the clipboard.
-- Confirm before deleting a snippet.
-- Save the snippet library in the current browser with `localStorage`.
-- Responsive layouts for desktop, tablet, and mobile screens.
-- Separate About, How it works, Privacy, and Contact pages.
-- Load the Monaco editor only when the Add/Edit form is opened.
+- შექმენით და დაარედაქტირეთ ჩანაწერები მოქნილი ინტერფეისით და Syntax Highlight-ით.
+- მოძებნეთ ჩანაწერები სათაურის, კოდის, აღწერილობის და ტეგების მიხედვით.
+- გაფილტრეთ ენების და ფავორიტების მიხედვით.
+- დაამატეთ ჩანაწერები ფავორიტებში, შემდეგ ერთი დაჭერით დააკოპირეთ ის.
+- დამადასტურებელი Modal წაშლის წინ.
+- შეინახე ჩანაწერები ბიბლიოთეკაში `localStorage` დახმარებით.
+- რესპონსიული ვებგვერდი Desktop, Tablet და Mobile ეკრანებისთვის.
+- Monaco Editor ოპტიმიზაციის გამო ირთვება მხოლოდ მაშინ როდესაც ამატებთ ან არედაქტირებთ ჩანაწერს
 
 ## Getting Started
 
 ### Requirements
 
-- Node.js compatible with the installed Vite version
+- Node.js
 - npm
 
 ### Install and run
@@ -29,8 +28,6 @@ CodeSnippet Hub is a responsive browser-based library for saving, finding, and r
 npm ci
 npm run dev
 ```
-
-Vite prints the local development URL after the server starts.
 
 ### Available commands
 
@@ -51,11 +48,9 @@ Vite prints the local development URL after the server starts.
 | `/privacy` | Browser storage and privacy details |
 | `/contact` | Link to the GitHub repository |
 
-The app also displays a not-found page for unrecognized paths.
+ვებ-გვერდი ასევე აღიქვამს საზიებოში არასწორად ჩაწერილ გვერდის მისამართს და აბრუნებს Page Not Found გვერდს.
 
 ## How It Works
-
-The app loads a non-empty snippet array from `localStorage`; if there is no usable saved array, it starts with the examples in `src/data/initialSnippets.js`. Snippet changes and favorite toggles update app state and are then written to `localStorage`. Add/Edit opens a lazily loaded form and Monaco Editor. Search and filters run against the current snippet list.
 
 ```mermaid
 flowchart TD
@@ -104,16 +99,6 @@ flowchart TD
   AG -->|Information page link| I
   H --> AH[Open GitHub repository]
 ```
-
-## Data and Privacy
-
-There is no account system or application backend. Snippets are stored under the `code_snippets` key in the browser’s `localStorage` and are not synchronized between browsers or devices. Clearing the site’s browser storage removes the saved library. Do not store passwords, API keys, or other secrets in snippets.
-
-The Monaco editor loads its editor resources when opened and may require network access. The catalog itself displays saved code without initializing Monaco.
-
-## Deployment
-
-Build the static site with `npm run build` and deploy the contents of `dist/` to a static hosting provider. Because the app uses client-side routes, configure the host to serve `index.html` for paths such as `/about` and `/privacy`. If deploying under a URL subpath, configure Vite’s `base` option for that path before building.
 
 ## Project Structure
 
