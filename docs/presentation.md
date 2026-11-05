@@ -61,6 +61,5 @@
 - `localStorage` მონაცემები მხოლოდ browser-ში ინახება; cross-device sync არ არსებობს.
 - შესაძლებელია API/backend დამატება, user accounts, import/export, cloud sync.
 - ასევე შეიძლება დაემატოს tag management, search suggestions, dark mode და code preview enhancements.
-- საერთო შეჯამება: პროექტი აჩვენებს Front-end development, UI/UX, state management, persistence და component architecture-ს.
 
 **დასასრული:** მადლობა. კითხვები?
