@@ -3,7 +3,7 @@
 CodeSnippet Hub არის რესპონსიული ბრაუზერზე დაფუძნებული ბიბლიოთეკა სადაც მომხმარებელს შეუძლია შეინახოს, გააზიაროს, მოძებნოს, ფავორიტებში დაამატოს კოდი.
 
 **Repository:** [github.com/gvxhrgi/codesnippet-hub](https://github.com/gvxhrgi/codesnippet-hub)
-**Google Slides** [https://docs.google.com/presentation/d/1L0SMdSlLzon-DDjLruLSUrXK_jV8Iq6FYiA2sz3Q86A/edit?slide=id.p1#slide=id.p1]
+**Google Slides** [https://docs.google.com/presentation/d/1L0SMdSlLzon-DDjLruLSUrXK_jV8Iq6FYiA2sz3Q86A/edit?slide=id.p1#slide=id.p1](Link)
 
 ## Features
 
